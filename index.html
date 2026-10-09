@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuerdos — Perené</title>
+    <title>Turismo Perené</title>
     <style>
         * {
             margin: 0;
@@ -28,17 +28,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
         }
         nav a {
             color: white;
-            margin-left: 25px;
+            margin-left: 15px;
             text-decoration: none;
             font-weight: bold;
         }
@@ -52,65 +53,29 @@
             width: 100%;
             height: 100vh;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             overflow: hidden;
             background:
-                linear-gradient(rgba(0, 30, 20, 0.20), rgba(0, 30, 20, 0.20)),
-                url("img/PARK-PERENE.jpg") center / cover no-repeat;
-            padding-top: 80px;
+                linear-gradient(rgba(0, 30, 20, 0.40), rgba(0, 30, 20, 0.40)),
+                url("PARK-PERENE.jpg") center / cover no-repeat;
         }
         .hero-contenido {
-            position: relative;
-            z-index: 5;
-            padding: 20px 40px;
+            padding: 25px 45px;
             background: rgba(0, 0, 0, 0.35);
             border-radius: 15px;
         }
         .hero h1 {
             font-size: clamp(28px, 5vw, 42px);
-            line-height: 1.3;
             text-shadow: 2px 2px 8px #000;
-            margin: 0;
-        }
-        .flecha-bajar {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-        }
-        .flecha-bajar:hover {
-            background: #ffffff;
-            transform: translateX(-50%) scale(1.1);
-        }
-        .flecha-bajar svg {
-            width: 22px;
-            height: 22px;
-        }
-        @media screen and (max-width: 600px) {
-            .hero { padding-top: 60px; }
-            .flecha-bajar { width: 40px; height: 40px; bottom: 30px; }
         }
 
         /* VIDEO */
         .atractivos {
             position: relative;
-            height: 1000px;
+            height: 600px;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -125,35 +90,18 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 0;
         }
         .capa-video {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 50, 30, 0.45);
-            z-index: 1;
         }
-        .atractivos-contenido {
-            position: relative;
-            z-index: 2;
-        }
-        .atractivos-contenido h2 {
-            font-size: 45px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 7px #000;
-        }
-        .atractivos-contenido p {
-            font-size: 20px;
-            text-shadow: 2px 2px 5px #000;
-        }
+        .atractivos-contenido { position: relative; z-index: 2; }
 
         /* TARJETAS */
         .lista-atractivos {
-            padding: 70px 5%;
-            background: #f5f8f6;
+            padding: 60px 5%;
         }
         .titulo-tarjetas {
             text-align: center;
@@ -161,11 +109,8 @@
         }
         .titulo-tarjetas h2 {
             color: #0f4d2c;
-            font-size: 35px;
+            font-size: 32px;
             margin-bottom: 8px;
-        }
-        .titulo-tarjetas p {
-            color: #555;
         }
         .tarjetas {
             max-width: 1400px;
@@ -178,61 +123,36 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
-        .tarjeta:hover {
-            transform: translateY(-7px);
-        }
+        .tarjeta:hover { transform: translateY(-5px); }
         .tarjeta-imagen {
             width: 100%;
-            height: 190px;
+            height: 180px;
             object-fit: cover;
             cursor: pointer;
-            transition: opacity 0.3s;
         }
-        .tarjeta-imagen:hover {
-            opacity: 0.85;
-        }
-        .tarjeta-contenido {
-            padding: 20px;
-        }
+        .tarjeta-contenido { padding: 20px; }
         .tarjeta h3 {
             color: #0f4d2c;
             margin-bottom: 10px;
-            font-size: 20px;
-        }
-        .tarjeta p {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 15px;
         }
         .comidas-tarjeta {
             background: #eef8f1;
-            padding: 13px;
+            padding: 12px;
             border-radius: 10px;
             margin: 15px 0;
-        }
-        .comidas-tarjeta h4 {
-            color: #198754;
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-        .comidas-tarjeta p {
-            font-size: 13px;
-            color: #2d5a3f;
-            margin: 5px 0;
         }
         .botones-tarjeta {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-top: 15px;
         }
         .boton {
             flex: 1;
             min-width: 100px;
-            padding: 10px 8px;
+            padding: 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -241,87 +161,35 @@
             text-align: center;
             font-size: 13px;
         }
-        .boton-conocer {
-            background: #198754;
-            color: white;
-        }
-        .boton-conocer:hover {
-            background: #146c43;
-        }
-        .boton-mapa {
-            background: #e63946;
-            color: white;
-        }
-        .boton-mapa:hover {
-            background: #c82333;
-        }
+        .boton-conocer { background: #198754; color: white; }
+        .boton-mapa { background: #e63946; color: white; }
         .boton-galeria {
             background: #6f42c1;
             color: white;
             width: 100%;
-            margin-top: 5px;
-        }
-        .boton-galeria:hover {
-            background: #59369c;
+            margin-top: 8px;
         }
 
-        /* PROYECTO QR */
-        .proyecto {
-            padding: 70px 5%;
-            text-align: center;
-            background: linear-gradient(135deg, #e8f5ee, #d4eedc);
-        }
-        .proyecto h2 {
-            color: #0f4d2c;
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-        .pasos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 900px;
-            margin: 35px auto 0;
-        }
-        .paso {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-        .paso strong {
-            font-size: 40px;
-            color: #198754;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .paso h3 {
-            color: #0f4d2c;
-            margin-bottom: 8px;
-        }
-
-        /* VENTANA DE INFORMACIÓN */
+        /* VENTANA INFO */
         .ventana {
             display: none;
             position: fixed;
-            z-index: 9999;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0,0,0,0.75);
             justify-content: center;
             align-items: center;
             padding: 20px;
+            z-index: 9999;
         }
-        .ventana.mostrar {
-            display: flex;
-        }
+        .ventana.mostrar { display: flex; }
         .contenido-ventana {
             background: white;
-            border-radius: 15px;
             padding: 30px;
-            max-width: 700px;
+            border-radius: 15px;
+            max-width: 650px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -330,92 +198,61 @@
         .cerrar {
             position: absolute;
             top: 10px;
-            right: 18px;
-            font-size: 32px;
+            right: 15px;
+            font-size: 28px;
             background: none;
             border: none;
             cursor: pointer;
             color: #e63946;
         }
-        .contenido-ventana img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .contenido-ventana h2 {
-            color: #0f4d2c;
-            margin-bottom: 15px;
-        }
-        .contenido-ventana h3 {
-            color: #198754;
-            margin: 20px 0 8px;
-        }
 
-        /* GALERÍA DE CULTURA ✨ */
+        /* GALERÍA CULTURA */
         .galeria-ventana {
             display: none;
             position: fixed;
-            z-index: 10000;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0,0,0,0.9);
             padding: 30px 5%;
             overflow-y: auto;
+            z-index: 10000;
         }
-        .galeria-ventana.mostrar {
-            display: block;
-        }
+        .galeria-ventana.mostrar { display: block; }
         .galeria-cabecera {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-        .galeria-cabecera h2 {
-            color: white;
-            font-size: 28px;
-        }
+        .galeria-cabecera h2 { color: white; }
         .btn-volver {
             background: transparent;
             border: 2px solid white;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-        }
-        .btn-volver:hover {
-            background: white;
-            color: #333;
-        }
-        .galeria-descripcion {
-            color: #ddd;
-            margin-bottom: 25px;
-            font-size: 16px;
         }
         .galeria-fotos {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
         }
         .foto-item {
             background: #222;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
         }
         .foto-item img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
-            display: block;
         }
         .foto-item p {
-            color: #eee;
-            padding: 12px;
+            color: white;
+            padding: 10px;
             font-size: 14px;
         }
         .agregar-foto {
@@ -424,41 +261,28 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 200px;
+            height: 180px;
             color: #888;
             cursor: pointer;
-            transition: all 0.3s;
         }
-        .agregar-foto:hover {
-            border-color: #198754;
-            color: #198754;
-        }
-        .agregar-foto span {
-            font-size: 40px;
-            margin-bottom: 8px;
-        }
+        .agregar-foto:hover { border-color: #198754; color: #198754; }
 
-        /* PIE DE PÁGINA */
+        /* PIE */
         footer {
             background: #0f4d2c;
             color: white;
             text-align: center;
-            padding: 35px 5%;
-        }
-        footer h3 {
-            margin-bottom: 8px;
+            padding: 30px 5%;
+            margin-top: 40px;
         }
 
         /* RESPONSIVE */
         @media (max-width: 1200px) {
             .tarjetas { grid-template-columns: repeat(2, 1fr); }
         }
-        @media (max-width: 700px) {
-            header { flex-direction: column; gap: 12px; }
-            nav a { margin: 0 10px; }
+        @media (max-width: 650px) {
             .tarjetas { grid-template-columns: 1fr; }
-            .pasos { grid-template-columns: 1fr; }
-            .atractivos-contenido h2 { font-size: 32px; }
+            header { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -468,191 +292,182 @@
     <div class="logo">MUNICIPALIDAD DISTRITAL DE PERENÉ</div>
     <nav>
         <a href="#inicio">Inicio</a>
-        <a href="#video-section">Atractivos</a>
+        <a href="#atractivos">Atractivos</a>
         <a href="#proyecto">Proyecto</a>
     </nav>
 </header>
 
-<!-- PORTADA -->
 <section id="inicio" class="hero">
     <div class="hero-contenido">
         <h1>Descubre la magia natural de Perené</h1>
     </div>
-    <a href="#video-section" class="flecha-bajar" aria-label="Bajar">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </a>
 </section>
 
-<!-- VIDEO -->
-<section id="video-section" class="atractivos">
+<section id="atractivos" class="atractivos">
     <video class="video-fondo" autoplay muted loop playsinline>
-        <source src="videos/cascada.mp4" type="video/mp4">
+        <source src="cascada01.mp4" type="video/mp4">
         Tu navegador no soporta videos.
     </video>
     <div class="capa-video"></div>
     <div class="atractivos-contenido">
-        <h2></h2>
-        <p></p>
+        <h2>Conoce nuestros atractivos</h2>
     </div>
 </section>
 
-<!-- TARJETAS CON BOTÓN DE GALERÍA -->
 <section class="lista-atractivos">
     <div class="titulo-tarjetas">
-        <h2>Lugares turísticos de Perené</h2>
-        <p>Descubre nuestros principales atractivos turísticos y su cultura.</p>
+        <h2>Lugares Turísticos de Perené</h2>
+        <p>Descubre nuestros principales atractivos y su cultura</p>
     </div>
     <div class="tarjetas">
 
-        <!-- 1️⃣ BOCA TIGRE -->
+        <!-- BOCA TIGRE -->
         <div class="tarjeta">
-            <img src="img/boca_tigre.jpg" alt="Boca Tigre" class="tarjeta-imagen" onclick="abrirGaleria(0)">
+            <img src="boca_tigre.jpg" alt="Boca Tigre" class="tarjeta-imagen" onclick="abrirGaleria(0)">
             <div class="tarjeta-contenido">
                 <h3>Boca Tigre</h3>
-                <p>Disfruta de la naturaleza y caídas de agua en una zona de selva alta.</p>
+                <p>Caídas de agua en zona de selva alta</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Juanes — arroz con pollo envuelto en hoja de bijao.</p>
-                    <p>Tacacho con cecina — plátano asado con cerdo.</p>
+                    <p>Juanes — arroz con pollo en hoja de bijao</p>
+                    <p>Tacacho con cecina — plátano asado con cerdo</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(0)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Boca Tigre, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Boca Tigre, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(0)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 2️⃣ CAVERNA LA OLADA -->
+        <!-- CAVERNA LA OLADA -->
         <div class="tarjeta">
-            <img src="img/caverna_la_olada.jpg" alt="Caverna La Olada" class="tarjeta-imagen" onclick="abrirGaleria(1)">
+            <img src="caverna_la_olada.jpg" alt="Caverna La Olada" class="tarjeta-imagen" onclick="abrirGaleria(1)">
             <div class="tarjeta-contenido">
                 <h3>Caverna La Olada</h3>
-                <p>Explora formaciones naturales y la riqueza de la selva central.</p>
+                <p>Formaciones naturales en selva central</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Patarashca — pescado envuelto en hoja de plátano.</p>
-                    <p>Inchicapi — sopa de gallina con maní y yuca.</p>
+                    <p>Patarashca — pescado en hoja de plátano</p>
+                    <p>Inchicapi — sopa de gallina con maní</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(1)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Caverna La Olada, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Caverna La Olada, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(1)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 3️⃣ CATARATA -->
+        <!-- CATARATA -->
         <div class="tarjeta">
-            <img src="img/catarata.jpg" alt="Catarata" class="tarjeta-imagen" onclick="abrirGaleria(2)">
+            <img src="catarata.jpg" alt="Catarata" class="tarjeta-imagen" onclick="abrirGaleria(2)">
             <div class="tarjeta-contenido">
                 <h3>Catarata</h3>
-                <p>Paisaje natural rodeado de vegetación y agua cristalina.</p>
+                <p>Agua cristalina entre vegetación</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Sopa de camarones de río con hierbas aromáticas.</p>
-                    <p>Maito de pescado — cocido en hoja de bijao.</p>
+                    <p>Sopa de camarones de río</p>
+                    <p>Maito de pescado en hoja de bijao</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(2)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Catarata, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Catarata, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(2)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 4️⃣ FUNDO SAN ISIDRO -->
+        <!-- FUNDO SAN ISIDRO -->
         <div class="tarjeta">
-            <img src="img/fundo_san_isidro.jpg" alt="Fundo San Isidro" class="tarjeta-imagen" onclick="abrirGaleria(3)">
+            <img src="fundo_san_isidro.jpg" alt="Fundo San Isidro" class="tarjeta-imagen" onclick="abrirGaleria(3)">
             <div class="tarjeta-contenido">
                 <h3>Fundo San Isidro</h3>
-                <p>Varias caídas de agua en un entorno natural de Río Amarillo.</p>
+                <p>Caídas de agua en Río Amarillo</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Seco de chabelo — plátano verde con carne y ají.</p>
-                    <p>Chapo — plátano maduro batido con queso fresco.</p>
+                    <p>Seco de chabelo — plátano verde con carne</p>
+                    <p>Chapo — plátano maduro con queso</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(3)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Fundo San Isidro, Río Amarillo, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Fundo San Isidro, Río Amarillo, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(3)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 5️⃣ JUAN SANTOS ATAHUALPA -->
+        <!-- JUAN SANTOS ATAHUALPA -->
         <div class="tarjeta">
-            <img src="img/juan_santos_atahualpa.jpg" alt="Juan Santos Atahualpa" class="tarjeta-imagen" onclick="abrirGaleria(4)">
+            <img src="juan_santos_atahualpa.jpg" alt="Juan Santos Atahualpa" class="tarjeta-imagen" onclick="abrirGaleria(4)">
             <div class="tarjeta-contenido">
                 <h3>Juan Santos Atahualpa</h3>
-                <p>Lugar con historia y cultura de la Selva Central.</p>
+                <p>Lugar con historia y cultura viva</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Caldo de carachama — sopa con pescado de río.</p>
-                    <p>Ensalada de palmito — fresco con limón y cebolla.</p>
+                    <p>Caldo de carachama — sopa de pescado de río</p>
+                    <p>Ensalada de palmito fresco</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(4)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Juan Santos Atahualpa, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Juan Santos Atahualpa, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(4)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 6️⃣ MIRADOR VALLE GRANDE -->
+        <!-- MIRADOR VALLE GRANDE -->
         <div class="tarjeta">
-            <img src="img/mirador.jpg" alt="Mirador Valle Grande" class="tarjeta-imagen" onclick="abrirGaleria(5)">
+            <img src="mirador.jpg" alt="Mirador Valle Grande" class="tarjeta-imagen" onclick="abrirGaleria(5)">
             <div class="tarjeta-contenido">
                 <h3>Mirador Valle Grande</h3>
-                <p>Vista panorámica de los valles y paisajes de Perené.</p>
+                <p>Vista panorámica de los valles</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Juane de gallina — arroz con gallina en hoja de bijao.</p>
-                    <p>Ceviche de paiche — pescado de río con limón y ají.</p>
+                    <p>Juane de gallina en hoja de bijao</p>
+                    <p>Ceviche de paiche — pescado de río</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(5)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Mirador Valle Grande, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Mirador Valle Grande, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(5)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 7️⃣ PISCINA -->
+        <!-- PISCINA -->
         <div class="tarjeta">
-            <img src="img/piscina.jpg" alt="Piscina" class="tarjeta-imagen" onclick="abrirGaleria(6)">
+            <img src="piscina.jpg" alt="Piscina" class="tarjeta-imagen" onclick="abrirGaleria(6)">
             <div class="tarjeta-contenido">
                 <h3>Piscina</h3>
-                <p>Espacio recreativo natural para disfrutar en familia.</p>
+                <p>Espacio recreativo natural</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Crema de ungurahui — preparación tradicional con fruta local.</p>
-                    <p>Pescado frito con yuca — pescado de río crujiente.</p>
+                    <p>Crema de ungurahui — fruta local</p>
+                    <p>Pescado frito con yuca</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(6)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Piscina turística, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Piscina turística, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(6)">📸 Fotos de Cultura</button>
             </div>
         </div>
 
-        <!-- 8️⃣ VELO DE LA NOVIA -->
+        <!-- VELO DE LA NOVIA -->
         <div class="tarjeta">
-            <img src="img/velo_de_la_novia.jpg" alt="Velo de la Novia" class="tarjeta-imagen" onclick="abrirGaleria(7)">
+            <img src="velo_de_la_novia.jpg" alt="Velo de la Novia" class="tarjeta-imagen" onclick="abrirGaleria(7)">
             <div class="tarjeta-contenido">
                 <h3>Velo de la Novia</h3>
-                <p>Hermosa caída de agua cerca de Puerto Yurinaki.</p>
+                <p>Hermosa caída de agua</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
-                    <p>Mazamorra de plátano — postre tradicional.</p>
-                    <p>Pescado frito con yuca — acompañado de ensalada.</p>
+                    <p>Mazamorra de plátano — postre tradicional</p>
+                    <p>Pescado frito con yuca y ensalada</p>
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(7)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Catarata Velo de la Novia de Bayoz, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irMaps('Catarata Velo de la Novia, Perené')">📍 Llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(7)">📸 Fotos de Cultura</button>
             </div>
@@ -661,231 +476,190 @@
     </div>
 </section>
 
-<section id="proyecto" class="proyecto">
-    <h2>Turismo mediante Códigos QR</h2>
-    <p>Escanea el código QR en cada atractivo y accede al instante a toda la información turística.</p>
-    <div class="pasos">
-        <div class="paso">
-            <strong>01</strong>
-            <h3>Encuentra el código QR</h3>
-            <p>Ubica el código QR instalado en el atractivo turístico.</p>
+<section id="proyecto" style="background: linear-gradient(135deg,#e8f5ee,#d4eedc);padding:60px 5%;text-align:center;">
+    <h2 style="color:#0f4d2c;font-size:32px;margin-bottom:15px;">Turismo con Códigos QR</h2>
+    <p style="max-width:700px;margin:0 auto 30px;">Escanea el código en cada lugar y accede a toda la información</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:900px;margin:auto;">
+        <div style="background:white;padding:25px;border-radius:15px;">
+            <strong style="font-size:36px;color:#198754;">01</strong>
+            <h3 style="color:#0f4d2c;margin:10px 0;">Encuentra el QR</h3>
+            <p>Ubícalo en el atractivo</p>
         </div>
-        <div class="paso">
-            <strong>02</strong>
-            <h3>Escanea con tu celular</h3>
-            <p>Utiliza la cámara de tu celular para escanear el código.</p>
+        <div style="background:white;padding:25px;border-radius:15px;">
+            <strong style="font-size:36px;color:#198754;">02</strong>
+            <h3 style="color:#0f4d2c;margin:10px 0;">Escanea</h3>
+            <p>Con la cámara de tu celular</p>
         </div>
-        <div class="paso">
-            <strong>03</strong>
-            <h3>Conoce y disfruta</h3>
-            <p>Accede a información, imágenes y datos del atractivo.</p>
+        <div style="background:white;padding:25px;border-radius:15px;">
+            <strong style="font-size:36px;color:#198754;">03</strong>
+            <h3 style="color:#0f4d2c;margin:10px 0;">Disfruta</h3>
+            <p>Accede a fotos, datos y cultura</p>
         </div>
     </div>
 </section>
 
-<!-- VENTANA DE INFORMACIÓN -->
-<div id="ventanaAtractivo" class="ventana">
+<!-- VENTANA INFO -->
+<div id="ventanaInfo" class="ventana">
     <div class="contenido-ventana">
-        <button class="cerrar" onclick="cerrarAtractivo()">&times;</button>
-        <img id="imagenAtractivo" src="" alt="">
-        <h2 id="nombreAtractivo"></h2>
-        <p id="descripcionAtractivo"></p>
-        <h3>🍽️ Comidas típicas</h3>
-        <p id="comidasAtractivo"></p>
-        <h3>📍 ¿Cómo llegar?</h3>
-        <p id="rutaAtractivo"></p>
-        <h3>🚗 Acceso</h3>
-        <p id="accesoAtractivo"></p>
+        <button class="cerrar" onclick="cerrarInfo()">&times;</button>
+        <img id="imgInfo" src="" alt="" style="width:100%;height:250px;object-fit:cover;border-radius:10px;margin-bottom:20px;">
+        <h2 id="tituloInfo" style="color:#0f4d2c;margin-bottom:15px;"></h2>
+        <p id="textoInfo" style="margin-bottom:15px;"></p>
+        <h3 style="color:#198754;">🍽️ Comidas típicas</h3>
+        <p id="comidaInfo" style="margin-bottom:15px;"></p>
+        <h3 style="color:#198754;">📍 Cómo llegar</h3>
+        <p id="rutaInfo"></p>
     </div>
 </div>
 
-<!-- GALERÍA DE CULTURA ✨ -->
-<div id="galeriaVentana" class="galeria-ventana">
+<!-- GALERÍA CULTURA -->
+<div id="galeriaCultura" class="galeria-ventana">
     <div class="galeria-cabecera">
-        <h2 id="galeriaTitulo"></h2>
+        <h2 id="tituloGaleria"></h2>
         <button class="btn-volver" onclick="cerrarGaleria()">← Volver</button>
     </div>
-    <p class="galeria-descripcion" id="galeriaDescripcion"></p>
-    <div class="galeria-fotos" id="galeriaFotos"></div>
+    <p id="descripcionGaleria" style="color:#ddd;margin-bottom:20px;"></p>
+    <div id="fotosGaleria" class="galeria-fotos"></div>
 </div>
 
 <footer>
     <h3>Municipalidad Distrital de Perené</h3>
-    <p>Sistema de Información Turística — ¡Descubre y disfruta Perené! 🍲</p>
+    <p>Sistema de Información Turística</p>
     <p>© 2026 Todos los derechos reservados</p>
 </footer>
 
 <script>
-const atractivos = [
+const datos = [
     {
         nombre: "Boca Tigre",
-        imagen: "img/boca_tigre.jpg",
-        descripcion: "La Catarata Boca Tigre se encuentra en la zona de Bajo Toterani. Destaca por sus hermosas caídas de agua y su entorno de selva alta con abundante vegetación.",
-        comidas: "🍲 <strong>Juanes</strong> — arroz con pollo, huevo y especias, envuelto en hojas de bijao y cocinado al vapor.<br><br>🍲 <strong>Tacacho con cecina</strong> — plátano verde asado y machacado con manteca, acompañado de carne de cerdo.",
-        ruta: "Desde La Merced se toma la carretera hacia Perené y se continúa por la carretera Fernando Belaúnde Terry hasta llegar.",
-        acceso: "Aproximadamente 24 km desde La Merced hasta Santa Ana y 13 km más hasta la catarata.",
+        imagen: "boca_tigre.jpg",
+        descripcion: "Caídas de agua en zona de selva alta, con abundante vegetación y naturaleza intacta.",
+        comidas: "Juanes — arroz con pollo envuelto en hoja de bijao<br>Tacacho con cecina — plátano asado con cerdo",
+        ruta: "Desde La Merced por carretera hasta Santa Ana y continuar 13 km más.",
         galeria: {
-            descripcion: "Conoce las tradiciones, vestimentas, comidas y costumbres de la comunidad de Boca Tigre.",
+            descripcion: "Tradiciones, comidas y costumbres de la comunidad de Boca Tigre.",
             fotos: [
-                { src: "img/cultura/caseta_boca_tigre.jpg", pie: "Caseta de información de Boca Tigre" },
-                { src: "img/cultura/comida.jpg", pie: "Comidas típicas de la zona" },
-                { src: "img/cultura/plato_tipico.jpg", pie: "Plato representativo de la gastronomía local" }
+                { src: "caseta_boca_tigre.jpg", pie: "Caseta de información" },
+                { src: "comida.jpg", pie: "Comidas típicas de la zona" },
+                { src: "plato_tipico.jpg", pie: "Plato representativo local" }
             ]
         }
     },
     {
         nombre: "Caverna La Olada",
-        imagen: "img/caverna_la_olada.jpg",
-        descripcion: "La Caverna La Olada presenta impresionantes formaciones naturales. Es un lugar interesante para conocer la riqueza geológica de la zona.",
-        comidas: "🍲 <strong>Patarashca</strong> — pescado fresco envuelto en hojas de plátano con ají, cebolla y ajo.<br><br>🍲 <strong>Inchicapi</strong> — sopa de gallina con maní molido, yuca y hierbas aromáticas.",
-        ruta: "A unos 20 km de la ciudad de Perené por carretera hasta el sector de La Olada.",
-        acceso: "Se llega por carretera y luego se ingresa a pie. Se recomienda ir con guía local.",
+        imagen: "caverna_la_olada.jpg",
+        descripcion: "Impresionantes formaciones naturales y riqueza geológica de la selva central.",
+        comidas: "Patarashca — pescado en hoja de plátano<br>Inchicapi — sopa de gallina con maní y yuca",
+        ruta: "A 20 km de Perené por carretera, luego ingreso a pie.",
         galeria: {
-            descripcion: "La cultura y las historias ancestrales relacionadas con la caverna.",
+            descripcion: "Historias y cultura relacionadas con la caverna.",
             fotos: [
-                { src: "img/cultura/caseta_al_rio.jfif", pie: "Entrada y camino hacia la caverna" },
-                { src: "img/cultura/olada1.jpg", pie: "Vista principal de la Caverna La Olada" },
-                { src: "img/cultura/olada6.jpg", pie: "Formaciones y entorno natural de la caverna" },
-                { src: "img/cultura/olada10.jpg", pie: "Camino y vegetación alrededor de La Olada" }
+                { src: "caseta_al_rio.jpg", pie: "Camino de ingreso" },
+                { src: "olada1.jpg", pie: "Vista principal de la caverna" },
+                { src: "olada6.jpg", pie: "Formaciones naturales" },
+                { src: "olada10.jpg", pie: "Entorno y vegetación" }
             ]
         }
     },
     {
         nombre: "Catarata",
-        imagen: "img/catarata.jpg",
-        descripcion: "Hermoso salto de agua rodeado de exuberante vegetación propia de la Selva Central.",
-        comidas: "🍲 <strong>Sopa de camarones de río</strong> — preparada con camarones frescos, yuca, plátano y hierbas de la zona.<br><br>🍲 <strong>Maito de pescado</strong> — pescado de río sazonado y cocido dentro de hojas de bijao.",
-        ruta: "Desde Villa Perené se toma la vía hacia la zona turística y se continúa hasta el atractivo.",
-        acceso: "El último tramo se recorre caminando brevemente.",
-        galeria: {
-            descripcion: "La vida cotidiana y las tradiciones de las familias que viven cerca de la catarata.",
-            fotos: []
-        }
+        imagen: "catarata.jpg",
+        descripcion: "Salto de agua rodeado de exuberante vegetación de la Selva Central.",
+        comidas: "Sopa de camarones de río con hierbas<br>Maito de pescado en hoja de bijao",
+        ruta: "Desde Villa Perené por vía turística.",
+        galeria: { descripcion: "Tradiciones de las familias cercanas.", fotos: [] }
     },
     {
         nombre: "Fundo San Isidro",
-        imagen: "img/fundo_san_isidro.jpg",
-        descripcion: "Ubicado en el Centro Poblado de Río Amarillo, cuenta con varias caídas de agua y un entorno natural.",
-        comidas: "🍲 <strong>Seco de chabelo</strong> — plátano verde con carne y ají.<br><br>🍲 <strong>Chapo</strong> — plátano maduro batido con queso fresco.",
-        ruta: "Desde Villa Perené se dirige hacia Río Amarillo y se continúa hasta Naciente Kimarini.",
-        acceso: "Permite caminatas, observación de aves y fotografía del paisaje.",
-        galeria: {
-            descripcion: "Las costumbres agrícolas y la vida comunitaria de Río Amarillo.",
-            fotos: []
-        }
+        imagen: "fundo_san_isidro.jpg",
+        descripcion: "Varias caídas de agua en entorno natural de Río Amarillo.",
+        comidas: "Seco de chabelo — plátano verde con carne<br>Chapo — plátano maduro con queso fresco",
+        ruta: "Hacia Río Amarillo hasta Naciente Kimarini.",
+        galeria: { descripcion: "Vida comunitaria y agricultura local.", fotos: [] }
     },
     {
         nombre: "Juan Santos Atahualpa",
-        imagen: "img/juan_santos_atahualpa.jpg",
-        descripcion: "Lugar con significado histórico relacionado con la identidad y la historia de la Selva Central.",
-        comidas: "🍲 <strong>Caldo de carachama</strong> — sopa preparada con pescado de río, yuca, plátano y hierbas.<br><br>🍲 <strong>Ensalada de palmito</strong> — palmito fresco con cebolla y limón.",
-        ruta: "Desde Villa Perené se consulta la ubicación específica del lugar.",
-        acceso: "Acceso según el punto de referencia del lugar.",
-        galeria: {
-            descripcion: "Historia, memoria y cultura viva del pueblo.",
-            fotos: []
-        }
+        imagen: "juan_santos_atahualpa.jpg",
+        descripcion: "Lugar con significado histórico e identidad cultural de la Selva Central.",
+        comidas: "Caldo de carachama — pescado de río<br>Ensalada de palmito fresco",
+        ruta: "Consultar referencia en Villa Perené.",
+        galeria: { descripcion: "Memoria e historia del pueblo.", fotos: [] }
     },
     {
         nombre: "Mirador Valle Grande",
-        imagen: "img/mirador.jpg",
-        descripcion: "El Mirador ofrece una vista panorámica de los valles y montañas que rodean Perené.",
-        comidas: "🍲 <strong>Juane de gallina</strong> — arroz con gallina preparado en hoja de bijao.<br><br>🍲 <strong>Ceviche de paiche</strong> — pescado de río preparado con limón, ají, cebolla y culantro.",
-        ruta: "Desde Villa Perené se toma la ruta hacia Valle Grande hasta el mirador.",
-        acceso: "Por carretera y luego el tramo habilitado hacia la plataforma de observación.",
-        galeria: {
-            descripcion: "La cultura que habita en los valles de Perené.",
-            fotos: []
-        }
+        imagen: "mirador.jpg",
+        descripcion: "Vista panorámica de los valles y montañas de Perené.",
+        comidas: "Juane de gallina en hoja de bijao<br>Ceviche de paiche — pescado de río",
+        ruta: "Ruta hacia Valle Grande hasta la plataforma.",
+        galeria: { descripcion: "Cultura de los valles de Perené.", fotos: [] }
     },
     {
         nombre: "Piscina",
-        imagen: "img/piscina.jpg",
-        descripcion: "Espacio recreativo en un entorno natural, ideal para pasar el día y disfrutar en familia.",
-        comidas: "🍲 <strong>Crema de ungurahui</strong> — preparación tradicional con fruta local.<br><br>🍲 <strong>Pescado frito con yuca</strong> — pescado de río servido con yuca.",
-        ruta: "Desde Villa Perené se dirige hacia el complejo turístico correspondiente.",
-        acceso: "Consultar horarios y tarifas directamente en el lugar.",
-        galeria: {
-            descripcion: "Encuentros familiares y celebraciones comunitarias.",
-            fotos: []
-        }
+        imagen: "piscina.jpg",
+        descripcion: "Espacio recreativo natural para disfrutar en familia.",
+        comidas: "Crema de ungurahui — fruta local<br>Pescado frito con yuca",
+        ruta: "Complejo turístico desde Villa Perené.",
+        galeria: { descripcion: "Reuniones familiares y celebraciones.", fotos: [] }
     },
     {
         nombre: "Velo de la Novia",
-        imagen: "img/velo_de_la_novia.jpg",
-        descripcion: "Espectacular caída de agua ubicada cerca de Puerto Yurinaki. Es uno de los atractivos más conocidos de la zona.",
-        comidas: "🍲 <strong>Mazamorra de plátano</strong> — postre tradicional elaborado con plátano maduro.<br><br>🍲 <strong>Pescado frito con yuca</strong> — pescado acompañado de yuca y ensalada.",
-        ruta: "Desde Perené hacia Puerto Yurinaki y luego por carretera afirmada hasta el ingreso.",
-        acceso: "Desde el ingreso se camina aproximadamente 340 metros hasta la catarata.",
-        galeria: {
-            descripcion: "Leyendas, historias y la belleza cultural de Puerto Yurinaki.",
-            fotos: []
-        }
+        imagen: "velo_de_la_novia.jpg",
+        descripcion: "Espectacular caída de agua cerca de Puerto Yurinaki.",
+        comidas: "Mazamorra de plátano — postre tradicional<br>Pescado frito con yuca",
+        ruta: "Hacia Puerto Yurinaki, luego caminar 340 m.",
+        galeria: { descripcion: "Leyendas y belleza de la zona.", fotos: [] }
     }
 ];
 
-// ==============================================
-// FUNCIONES
-// ==============================================
-
 function abrirGaleria(i) {
-    const atr = atractivos[i];
-    document.getElementById("galeriaTitulo").textContent = "📸 Cultura — " + atr.nombre;
-    document.getElementById("galeriaDescripcion").textContent = atr.galeria.descripcion;
+    const d = datos[i];
+    document.getElementById("tituloGaleria").textContent = "📸 Cultura — " + d.nombre;
+    document.getElementById("descripcionGaleria").textContent = d.galeria.descripcion;
+    const cont = document.getElementById("fotosGaleria");
+    cont.innerHTML = "";
     
-    const contenedor = document.getElementById("galeriaFotos");
-    contenedor.innerHTML = "";
-    
-    atr.galeria.fotos.forEach(foto => {
+    d.galeria.fotos.forEach(f => {
         const div = document.createElement("div");
         div.className = "foto-item";
-        div.innerHTML = `<img src="${foto.src}" alt="${foto.pie}"><p>${foto.pie}</p>`;
-        contenedor.appendChild(div);
+        div.innerHTML = `<img src="${f.src}" alt="${f.pie}"><p>${f.pie}</p>`;
+        cont.appendChild(div);
     });
     
     const agregar = document.createElement("div");
     agregar.className = "foto-item agregar-foto";
-    agregar.innerHTML = `<span>+</span><p>Agregar nueva foto</p>`;
-    agregar.onclick = function() {
-        alert("Para agregar fotos:\n1️⃣ Pon tu foto en: img/cultura/\n2️⃣ Agrega en el código:\n{ src: 'img/cultura/tu_foto.jpg', pie: 'Descripción' }");
-    };
-    contenedor.appendChild(agregar);
+    agregar.innerHTML = `<span style="font-size:30px;">+</span><p>Agregar foto</p>`;
+    agregar.onclick = () => alert("Sube tu foto al repositorio y agrega:\n{ src: 'nombre.jpg', pie: 'Descripción' }");
+    cont.appendChild(agregar);
     
-    document.getElementById("galeriaVentana").classList.add("mostrar");
+    document.getElementById("galeriaCultura").classList.add("mostrar");
     document.body.style.overflow = "hidden";
 }
 
 function cerrarGaleria() {
-    document.getElementById("galeriaVentana").classList.remove("mostrar");
+    document.getElementById("galeriaCultura").classList.remove("mostrar");
     document.body.style.overflow = "auto";
 }
 
 function mostrarAtractivo(i) {
-    const a = atractivos[i];
-    document.getElementById("imagenAtractivo").src = a.imagen;
-    document.getElementById("nombreAtractivo").textContent = a.nombre;
-    document.getElementById("descripcionAtractivo").textContent = a.descripcion;
-    document.getElementById("comidasAtractivo").innerHTML = a.comidas;
-    document.getElementById("rutaAtractivo").textContent = a.ruta;
-    document.getElementById("accesoAtractivo").textContent = a.acceso;
-    document.getElementById("ventanaAtractivo").classList.add("mostrar");
+    const d = datos[i];
+    document.getElementById("imgInfo").src = d.imagen;
+    document.getElementById("tituloInfo").textContent = d.nombre;
+    document.getElementById("textoInfo").textContent = d.descripcion;
+    document.getElementById("comidaInfo").innerHTML = d.comidas;
+    document.getElementById("rutaInfo").textContent = d.ruta;
+    document.getElementById("ventanaInfo").classList.add("mostrar");
 }
 
-function cerrarAtractivo() {
-    document.getElementById("ventanaAtractivo").classList.remove("mostrar");
+function cerrarInfo() {
+    document.getElementById("ventanaInfo").classList.remove("mostrar");
 }
 
-function irGoogleMaps(destino) {
-    const url = "https://www.google.com/maps/dir/?api=1&destination="
-        + encodeURIComponent(destino) + "&travelmode=driving";
-    window.open(url, "_blank");
+function irMaps(dest) {
+    window.open("https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(dest), "_blank");
 }
 
-document.getElementById("ventanaAtractivo").addEventListener("click", function(e) {
-    if (e.target.id === "ventanaAtractivo") cerrarAtractivo();
-});
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") { cerrarAtractivo(); cerrarGaleria(); }
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { cerrarInfo(); cerrarGaleria(); }
 });
 </script>
 
