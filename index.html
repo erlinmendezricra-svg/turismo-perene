@@ -60,7 +60,7 @@
             overflow: hidden;
             background:
                 linear-gradient(rgba(0, 30, 20, 0.40), rgba(0, 30, 20, 0.40)),
-                url("PARK-PERENE.jpg") center / cover no-repeat;
+                url("img/PARK-PERENE.jpg") center / cover no-repeat;
         }
         .hero-contenido {
             padding: 25px 45px;
@@ -305,7 +305,7 @@
 
 <section id="atractivos" class="atractivos">
     <video class="video-fondo" autoplay muted loop playsinline>
-        <source src="cascada01.mp4" type="video/mp4">
+        <source src="videos/cascada.mp4" type="video/mp4">
         Tu navegador no soporta videos.
     </video>
     <div class="capa-video"></div>
@@ -323,7 +323,7 @@
 
         <!-- BOCA TIGRE -->
         <div class="tarjeta">
-            <img src="boca_tigre.jpg" alt="Boca Tigre" class="tarjeta-imagen" onclick="abrirGaleria(0)">
+            <img src="img/boca_tigre.jpg" alt="Boca Tigre" class="tarjeta-imagen" onclick="abrirGaleria(0)">
             <div class="tarjeta-contenido">
                 <h3>Boca Tigre</h3>
                 <p>Caídas de agua en zona de selva alta</p>
@@ -342,7 +342,7 @@
 
         <!-- CAVERNA LA OLADA -->
         <div class="tarjeta">
-            <img src="caverna_la_olada.jpg" alt="Caverna La Olada" class="tarjeta-imagen" onclick="abrirGaleria(1)">
+            <img src="img/caverna_la_olada.jpg" alt="Caverna La Olada" class="tarjeta-imagen" onclick="abrirGaleria(1)">
             <div class="tarjeta-contenido">
                 <h3>Caverna La Olada</h3>
                 <p>Formaciones naturales en selva central</p>
@@ -361,7 +361,7 @@
 
         <!-- CATARATA -->
         <div class="tarjeta">
-            <img src="catarata.jpg" alt="Catarata" class="tarjeta-imagen" onclick="abrirGaleria(2)">
+            <img src="img/catarata.jpg" alt="Catarata" class="tarjeta-imagen" onclick="abrirGaleria(2)">
             <div class="tarjeta-contenido">
                 <h3>Catarata</h3>
                 <p>Agua cristalina entre vegetación</p>
@@ -380,7 +380,7 @@
 
         <!-- FUNDO SAN ISIDRO -->
         <div class="tarjeta">
-            <img src="fundo_san_isidro.jpg" alt="Fundo San Isidro" class="tarjeta-imagen" onclick="abrirGaleria(3)">
+            <img src="img/fundo_san_isidro.jpg" alt="Fundo San Isidro" class="tarjeta-imagen" onclick="abrirGaleria(3)">
             <div class="tarjeta-contenido">
                 <h3>Fundo San Isidro</h3>
                 <p>Caídas de agua en Río Amarillo</p>
@@ -399,7 +399,7 @@
 
         <!-- JUAN SANTOS ATAHUALPA -->
         <div class="tarjeta">
-            <img src="juan_santos_atahualpa.jpg" alt="Juan Santos Atahualpa" class="tarjeta-imagen" onclick="abrirGaleria(4)">
+            <img src="img/juan_santos_atahualpa.jpg" alt="Juan Santos Atahualpa" class="tarjeta-imagen" onclick="abrirGaleria(4)">
             <div class="tarjeta-contenido">
                 <h3>Juan Santos Atahualpa</h3>
                 <p>Lugar con historia y cultura viva</p>
@@ -418,7 +418,7 @@
 
         <!-- MIRADOR VALLE GRANDE -->
         <div class="tarjeta">
-            <img src="mirador.jpg" alt="Mirador Valle Grande" class="tarjeta-imagen" onclick="abrirGaleria(5)">
+            <img src="img/mirador.jpg" alt="Mirador Valle Grande" class="tarjeta-imagen" onclick="abrirGaleria(5)">
             <div class="tarjeta-contenido">
                 <h3>Mirador Valle Grande</h3>
                 <p>Vista panorámica de los valles</p>
@@ -437,7 +437,7 @@
 
         <!-- PISCINA -->
         <div class="tarjeta">
-            <img src="piscina.jpg" alt="Piscina" class="tarjeta-imagen" onclick="abrirGaleria(6)">
+            <img src="img/piscina.jpg" alt="Piscina" class="tarjeta-imagen" onclick="abrirGaleria(6)">
             <div class="tarjeta-contenido">
                 <h3>Piscina</h3>
                 <p>Espacio recreativo natural</p>
@@ -456,7 +456,7 @@
 
         <!-- VELO DE LA NOVIA -->
         <div class="tarjeta">
-            <img src="velo_de_la_novia.jpg" alt="Velo de la Novia" class="tarjeta-imagen" onclick="abrirGaleria(7)">
+            <img src="img/velo_de_la_novia.jpg" alt="Velo de la Novia" class="tarjeta-imagen" onclick="abrirGaleria(7)">
             <div class="tarjeta-contenido">
                 <h3>Velo de la Novia</h3>
                 <p>Hermosa caída de agua</p>
@@ -532,38 +532,38 @@
 const datos = [
     {
         nombre: "Boca Tigre",
-        imagen: "boca_tigre.jpg",
+        imagen: "img/boca_tigre.jpg",
         descripcion: "Caídas de agua en zona de selva alta, con abundante vegetación y naturaleza intacta.",
         comidas: "Juanes — arroz con pollo envuelto en hoja de bijao<br>Tacacho con cecina — plátano asado con cerdo",
         ruta: "Desde La Merced por carretera hasta Santa Ana y continuar 13 km más.",
         galeria: {
             descripcion: "Tradiciones, comidas y costumbres de la comunidad de Boca Tigre.",
             fotos: [
-                { src: "caseta_boca_tigre.jpg", pie: "Caseta de información" },
-                { src: "comida.jpg", pie: "Comidas típicas de la zona" },
-                { src: "plato_tipico.jpg", pie: "Plato representativo local" }
+                { src: "img/cultura/caseta_boca_tigre.jpg", pie: "Caseta de información" },
+                { src: "img/cultura/comida.jpg", pie: "Comidas típicas de la zona" },
+                { src: "img/cultura/plato_tipico.jpg", pie: "Plato representativo local" }
             ]
         }
     },
     {
         nombre: "Caverna La Olada",
-        imagen: "caverna_la_olada.jpg",
+        imagen: "img/caverna_la_olada.jpg",
         descripcion: "Impresionantes formaciones naturales y riqueza geológica de la selva central.",
         comidas: "Patarashca — pescado en hoja de plátano<br>Inchicapi — sopa de gallina con maní y yuca",
         ruta: "A 20 km de Perené por carretera, luego ingreso a pie.",
         galeria: {
             descripcion: "Historias y cultura relacionadas con la caverna.",
             fotos: [
-                { src: "caseta_al_rio.jpg", pie: "Camino de ingreso" },
-                { src: "olada1.jpg", pie: "Vista principal de la caverna" },
-                { src: "olada6.jpg", pie: "Formaciones naturales" },
-                { src: "olada10.jpg", pie: "Entorno y vegetación" }
+                { src: "img/cultura/caseta_al_rio.jpg", pie: "Camino de ingreso" },
+                { src: "img/cultura/olada1.jpg", pie: "Vista principal de la caverna" },
+                { src: "img/cultura/olada6.jpg", pie: "Formaciones naturales" },
+                { src: "img/cultura/olada10.jpg", pie: "Entorno y vegetación" }
             ]
         }
     },
     {
         nombre: "Catarata",
-        imagen: "catarata.jpg",
+        imagen: "img/catarata.jpg",
         descripcion: "Salto de agua rodeado de exuberante vegetación de la Selva Central.",
         comidas: "Sopa de camarones de río con hierbas<br>Maito de pescado en hoja de bijao",
         ruta: "Desde Villa Perené por vía turística.",
@@ -571,7 +571,7 @@ const datos = [
     },
     {
         nombre: "Fundo San Isidro",
-        imagen: "fundo_san_isidro.jpg",
+        imagen: "img/fundo_san_isidro.jpg",
         descripcion: "Varias caídas de agua en entorno natural de Río Amarillo.",
         comidas: "Seco de chabelo — plátano verde con carne<br>Chapo — plátano maduro con queso fresco",
         ruta: "Hacia Río Amarillo hasta Naciente Kimarini.",
@@ -579,7 +579,7 @@ const datos = [
     },
     {
         nombre: "Juan Santos Atahualpa",
-        imagen: "juan_santos_atahualpa.jpg",
+        imagen: "img/juan_santos_atahualpa.jpg",
         descripcion: "Lugar con significado histórico e identidad cultural de la Selva Central.",
         comidas: "Caldo de carachama — pescado de río<br>Ensalada de palmito fresco",
         ruta: "Consultar referencia en Villa Perené.",
@@ -587,7 +587,7 @@ const datos = [
     },
     {
         nombre: "Mirador Valle Grande",
-        imagen: "mirador.jpg",
+        imagen: "img/mirador.jpg",
         descripcion: "Vista panorámica de los valles y montañas de Perené.",
         comidas: "Juane de gallina en hoja de bijao<br>Ceviche de paiche — pescado de río",
         ruta: "Ruta hacia Valle Grande hasta la plataforma.",
@@ -595,7 +595,7 @@ const datos = [
     },
     {
         nombre: "Piscina",
-        imagen: "piscina.jpg",
+        imagen: "img/piscina.jpg",
         descripcion: "Espacio recreativo natural para disfrutar en familia.",
         comidas: "Crema de ungurahui — fruta local<br>Pescado frito con yuca",
         ruta: "Complejo turístico desde Villa Perené.",
@@ -603,7 +603,7 @@ const datos = [
     },
     {
         nombre: "Velo de la Novia",
-        imagen: "velo_de_la_novia.jpg",
+        imagen: "img/velo_de_la_novia.jpg",
         descripcion: "Espectacular caída de agua cerca de Puerto Yurinaki.",
         comidas: "Mazamorra de plátano — postre tradicional<br>Pescado frito con yuca",
         ruta: "Hacia Puerto Yurinaki, luego caminar 340 m.",
@@ -628,7 +628,7 @@ function abrirGaleria(i) {
     const agregar = document.createElement("div");
     agregar.className = "foto-item agregar-foto";
     agregar.innerHTML = `<span style="font-size:30px;">+</span><p>Agregar foto</p>`;
-    agregar.onclick = () => alert("Sube tu foto al repositorio y agrega:\n{ src: 'nombre.jpg', pie: 'Descripción' }");
+    agregar.onclick = () => alert("Sube tu foto a la carpeta img/cultura y agrega:\n{ src: 'img/cultura/nombre.jpg', pie: 'Descripción' }");
     cont.appendChild(agregar);
     
     document.getElementById("galeriaCultura").classList.add("mostrar");
