@@ -50,19 +50,55 @@
       color: white;
     }
     
+    /* 🐾 MENÚ DE ANIMALES */
+    .menu-animales {
+      position: absolute;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      padding: 0 10px;
+    }
+    
+    .menu-animales button {
+      background: #006633;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+    
+    .menu-animales button.activo {
+      background: #f9b823;
+      color: #000;
+    }
+    
+    .menu-animales button:hover {
+      transform: scale(1.05);
+    }
+    
     .portal-luz {
       position: absolute;
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,215,0,0.5), transparent 70%);
+      background: radial-gradient(circle, rgba(76,175,80,0.5), transparent 70%);
       animation: flotar 3s ease-in-out infinite;
       cursor: pointer;
       z-index: 50;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 28px;
     }
     
     @keyframes flotar {
@@ -70,8 +106,7 @@
       50% { transform: translateY(-15px) scale(1.15); opacity: 0.9; }
     }
     
-    /* Tarjeta de historia — arriba a la derecha con X de cierre */
-    .tarjeta-historia {
+    .tarjeta-info {
       position: absolute;
       top: 70px;
       right: 15px;
@@ -84,22 +119,21 @@
       display: none;
     }
     
-    .tarjeta-historia.mostrar {
+    .tarjeta-info.mostrar {
       display: block;
     }
     
-    .tarjeta-historia h3 {
+    .tarjeta-info h3 {
       color: #006633;
       margin-bottom: 8px;
       font-size: 16px;
     }
     
-    .tarjeta-historia p {
+    .tarjeta-info p {
       font-size: 14px;
       line-height: 1.5;
     }
     
-    /* Botón X para cerrar */
     .cerrar-x {
       position: absolute;
       top: 8px;
@@ -122,48 +156,6 @@
       background: #e0e0e0;
     }
     
-    /* Reto de conservación */
-    .tarjeta-reto {
-      position: absolute;
-      top: 200px;
-      right: 15px;
-      background: rgba(255,255,255,0.95);
-      padding: 15px 40px 15px 20px;
-      border-radius: 12px;
-      max-width: 280px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      z-index: 80;
-      display: none;
-    }
-    
-    .tarjeta-reto.mostrar {
-      display: block;
-    }
-    
-    .tarjeta-reto h3 {
-      color: #006633;
-      margin-bottom: 8px;
-      font-size: 15px;
-    }
-    
-    .tarjeta-reto p {
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    
-    .cerrar {
-      margin-top: 10px;
-      background: #006633;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 13px;
-    }
-    
-    /* Caja de idea — más pequeña abajo */
     .caja-idea {
       position: absolute;
       bottom: 15px;
@@ -196,7 +188,6 @@
       font-size: 13px;
     }
     
-    /* Botón como en tu ejemplo: amarillo con flecha */
     .btn-enviar {
       background: #f9b823;
       color: #000;
@@ -207,10 +198,6 @@
       font-weight: bold;
       cursor: pointer;
       width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
     
     .btn-enviar:hover {
@@ -228,114 +215,148 @@
     <button onclick="cambiarIdioma('en')">🇬🇧</button>
   </div>
 
-  <div class="portal-luz" style="top: 40%; left: 50%; transform: translate(-50%, -50%);" onclick="mostrarHistoria()">💧</div>
+  <!-- 🌿 Portal de Información de Plantas y Árboles -->
+  <div class="portal-luz" style="top: 40%; left: 50%; transform: translate(-50%, -50%);" onclick="mostrarInfo()">🌿</div>
 
-  <!-- Tarjeta de historia con X de cierre -->
-  <div class="tarjeta-historia" id="tarjetaHistoria">
-    <button class="cerrar-x" onclick="cerrarHistoria()">&times;</button>
-    <h3 id="tituloHistoria">💧 El agua es vida</h3>
-    <p id="textoHistoria">El agua es vida. Nuestros antepasados siempre nos enseñaron que el agua debe respetarse y cuidarse.</p>
+  <!-- 🐾 MENÚ DE ANIMALES -->
+  <div class="menu-animales">
+    <button class="activo" onclick="seleccionarAnimal('caiman')">🐊 Caimán</button>
+    <button onclick="seleccionarAnimal('mono')">🐒 Mono Choro</button>
+    <button onclick="seleccionarAnimal('jaguar')">🐅 Jaguar</button>
+    <button onclick="seleccionarAnimal('tucan')">🐦 Tucán</button>
+    <button onclick="seleccionarAnimal('tapir')">🐴 Tapir</button>
   </div>
 
-  <!-- Tarjeta de reto con X de cierre -->
-  <div class="tarjeta-reto" id="tarjetaReto">
-    <button class="cerrar-x" onclick="cerrarReto()">&times;</button>
-    <h3>🌿 Dato de Conservación</h3>
-    <p>La selva de Perené alberga especies únicas. Al cuidar el bosque, protegemos el hogar de todos los animales.</p>
-    <button class="cerrar" onclick="cerrarReto()">Entendido</button>
+  <!-- 📋 Tarjeta de información -->
+  <div class="tarjeta-info" id="tarjetaInfo">
+    <button class="cerrar-x" onclick="cerrarInfo()">&times;</button>
+    <h3 id="tituloInfo">Selecciona un animal</h3>
+    <p id="textoInfo">Toca un botón abajo para conocer a los animales de nuestra selva 🌿</p>
   </div>
 
-  <!-- Caja de idea más pequeña con botón como tu ejemplo -->
+  <!-- 💚 Caja de ideas -->
   <div class="caja-idea">
     <strong>💡 Tu idea de conservación</strong>
     <textarea id="miIdea" placeholder="Escribe aquí tu idea..."></textarea>
     <button class="btn-enviar" onclick="enviarIdea()">➤ Enviar mi idea</button>
   </div>
 
+  <!-- 📷 Escena de Realidad Aumentada -->
   <a-scene 
     arjs="sourceType: webcam;"
     vr-mode-ui="enabled: false">
     
     <a-assets>
-      <a-asset-item id="ave1" src="mariposa-morpho.glb"></a-asset-item>
-      <a-asset-item id="ave2" src="tucan.glb"></a-asset-item>
+      <!-- Aquí irán tus modelos 3D -->
+      <a-asset-item id="caiman" src="caiman.glb"></a-asset-item>
+      <a-asset-item id="mono" src="mono-choro.glb"></a-asset-item>
+      <a-asset-item id="jaguar" src="jaguar.glb"></a-asset-item>
+      <a-asset-item id="tucan" src="tucan.glb"></a-asset-item>
+      <a-asset-item id="tapir" src="tapir.glb"></a-asset-item>
     </a-assets>
 
-    <a-entity id="animal1" gltf-model="#ave1" position="-1 0.5 -2" scale="0.4 0.4 0.4"></a-entity>
-    <a-entity id="animal2" gltf-model="#ave2" position="1 0.8 -2.5" scale="0.5 0.5 0.5"></a-entity>
+    <!-- Modelos de animales (inicialmente ocultos) -->
+    <a-entity id="animal-actual" position="0 0 -3" scale="0.8 0.8 0.8"></a-entity>
     
     <a-entity camera></a-entity>
     <a-light type="ambient" intensity="1.5"></a-light>
   </a-scene>
 
   <script>
-    const textos = {
-      es: {
-        titulo: "💧 El agua es vida",
-        relato: "El agua es vida. Nuestros antepasados siempre nos enseñaron que el agua debe respetarse y cuidarse."
+    // 📝 Información de cada animal
+    const infoAnimales = {
+      caiman: {
+        titulo: "🐊 Caimán Negro",
+        descripcion: "Vive en ríos y lagunas como la de Boca Tigre. Es un depredador que mantiene el equilibrio del ecosistema. ¡No es agresivo con las personas si lo respetamos!"
       },
-      ash: {
-        titulo: "💧 Tsiri anke",
-        relato: "Tsiri anke. Koki tsiri okakori, okanti joshinto."
+      mono: {
+        titulo: "🐒 Mono Choro",
+        descripcion: "De cola amarilla y pelaje oscuro. Vive en las copas de los árboles. Ayuda a dispersar semillas: ¡come frutas y deja caer las semillas en otros lugares!"
       },
-      en: {
-        titulo: "💧 Water is Life",
-        relato: "Water is life. Our ancestors taught us that water must always be respected and protected."
+      jaguar: {
+        titulo: "🐅 Jaguar — El Rey de la Selva",
+        descripcion: "El felino más grande de América. Es símbolo de fuerza y equilibrio. Donde hay jaguares, hay bosques sanos. Está protegido: ¡no debemos cazarlo!"
+      },
+      tucan: {
+        titulo: "🐦 Tucán",
+        descripcion: "Con su pico colorido come frutas y dispersa las semillas de los árboles. Es el jardinero del bosque. Su canto anuncia que estamos en una selva viva."
+      },
+      tapir: {
+        titulo: "🐴 Tapir — El Gigante de la Selva",
+        descripcion: "El mamífero más grande de nuestra selva. Camina por senderos abiertos y come plantas y frutos. Es una especie antigua y muy importante para el bosque."
       }
     };
-    
-    let idiomaActual = 'es';
-    
-    function cambiarIdioma(idioma) {
-      idiomaActual = idioma;
-      document.querySelectorAll('.selector-idioma button').forEach(b => b.classList.remove('activo'));
+
+    // 🌿 Información de plantas y árboles
+    const infoNaturaleza = {
+      es: {
+        titulo: "🌿 Plantas y Árboles de Perené",
+        texto: "<strong>🌱 Muña:</strong> Ayuda al estómago y resfriados.<br><br><strong>🌲 Uña de Gato:</strong> Fortalece las articulaciones.<br><br><strong>🟡 Cedro:</strong> Madera valiosa, protegida.<br><br><strong>🟠 Lupuna:</strong> El gigante del bosque, más de 40m de altura."
+      }
+    };
+
+    let animalActual = null;
+
+    // 🐾 Cambiar de animal
+    function seleccionarAnimal(nombre) {
+      // Resaltar botón activo
+      document.querySelectorAll('.menu-animales button').forEach(b => b.classList.remove('activo'));
       event.target.classList.add('activo');
-      document.getElementById('tituloHistoria').textContent = textos[idioma].titulo;
-      document.getElementById('textoHistoria').textContent = textos[idioma].relato;
+      
+      // Mostrar información
+      document.getElementById('tituloInfo').textContent = infoAnimales[nombre].titulo;
+      document.getElementById('textoInfo').innerHTML = infoAnimales[nombre].descripcion;
+      document.getElementById('tarjetaInfo').classList.add('mostrar');
+      
+      // Cargar modelo 3D
+      const animal = document.getElementById('animal-actual');
+      animal.setAttribute('gltf-model', `#${nombre}`);
+      animalActual = nombre;
     }
-    
-    function mostrarHistoria() {
-      document.getElementById('tarjetaHistoria').classList.add('mostrar');
-      document.getElementById('tarjetaReto').classList.add('mostrar');
+
+    // 🌿 Mostrar info de plantas y árboles
+    function mostrarInfo() {
+      document.getElementById('tituloInfo').textContent = infoNaturaleza.es.titulo;
+      document.getElementById('textoInfo').innerHTML = infoNaturaleza.es.texto;
+      document.getElementById('tarjetaInfo').classList.add('mostrar');
     }
-    
-    function cerrarHistoria() {
-      document.getElementById('tarjetaHistoria').classList.remove('mostrar');
+
+    // ❌ Cerrar tarjeta
+    function cerrarInfo() {
+      document.getElementById('tarjetaInfo').classList.remove('mostrar');
     }
-    
-    function cerrarReto() {
-      document.getElementById('tarjetaReto').classList.remove('mostrar');
-    }
-    
+
+    // 💚 Enviar idea
     function enviarIdea() {
       const idea = document.getElementById('miIdea').value;
       if (idea.trim() === '') {
         alert('✍️ Escribe algo antes de enviar');
         return;
       }
-      alert('✅ ¡Gracias por tu idea! 💚\n\nTu aporte ayuda a cuidar Perené.');
+      alert('✅ ¡Gracias por tu idea! 💚\n\nAyudas a cuidar la fauna de Perené.');
       document.getElementById('miIdea').value = '';
     }
-    
-    let tiempo = 0;
-    function animarFauna() {
-      tiempo += 0.02;
-      const a1 = document.getElementById('animal1');
-      const a2 = document.getElementById('animal2');
-      
-      if (a1) {
-        const y1 = Math.sin(tiempo * 0.8) * 0.3 + 0.5;
-        a1.setAttribute('position', `-1 ${y1} -2`);
-        a1.setAttribute('rotation', `0 ${Math.sin(tiempo * 0.3) * 15} 0`);
-      }
-      if (a2) {
-        const y2 = Math.sin(tiempo * 0.6 + 1) * 0.25 + 0.8;
-        a2.setAttribute('position', `1 ${y2} -2.5`);
-      }
-      
-      requestAnimationFrame(animarFauna);
+
+    // 🌍 Idiomas
+    function cambiarIdioma(idioma) {
+      idiomaActual = idioma;
+      document.querySelectorAll('.selector-idioma button').forEach(b => b.classList.remove('activo'));
+      event.target.classList.add('activo');
     }
-    animarFauna();
+
+    // ✨ Animación suave del animal
+    let tiempo = 0;
+    function animarAnimal() {
+      tiempo += 0.02;
+      const animal = document.getElementById('animal-actual');
+      if (animal && animal.getAttribute('gltf-model')) {
+        const y = Math.sin(tiempo * 0.5) * 0.1 + 0;
+        animal.setAttribute('position', `0 ${y} -3`);
+        animal.setAttribute('rotation', `0 ${tiempo * 5} 0`);
+      }
+      requestAnimationFrame(animarAnimal);
+    }
+    animarAnimal();
   </script>
 
 </body>
