@@ -1,83 +1,342 @@
-/* Cuadro de información */
-.info-cuadro {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  max-width: 320px;
-  width: 90%;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 15px 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-  z-index: 1000;
-  display: none;
-  animation: aparecer 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fauna y Saberes - Perené</title>
+  
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { overflow: hidden; }
+    
+    .boton-volver {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .selector-idioma {
+      position: absolute;
+      top: 15px;
+      right: 60px;
+      z-index: 100;
+      background: white;
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    
+    .selector-idioma button {
+      border: none;
+      background: transparent;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .selector-idioma button.activo {
+      background: #006633;
+      color: white;
+    }
+    
+    .portal-luz {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,215,0,0.5), transparent 70%);
+      animation: flotar 3s ease-in-out infinite;
+      cursor: pointer;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-15px) scale(1.15); opacity: 0.9; }
+    }
+    
+    /* Tarjeta de historia — arriba a la derecha con X de cierre */
+    .tarjeta-historia {
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      background: rgba(255,255,255,0.95);
+      padding: 15px 40px 15px 20px;
+      border-radius: 12px;
+      max-width: 280px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 80;
+      display: none;
+    }
+    
+    .tarjeta-historia.mostrar {
+      display: block;
+    }
+    
+    .tarjeta-historia h3 {
+      color: #006633;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    .tarjeta-historia p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    /* Botón X para cerrar */
+    .cerrar-x {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: #f0f0f0;
+      border: none;
+      font-size: 20px;
+      color: #666;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    
+    .cerrar-x:hover {
+      background: #e0e0e0;
+    }
+    
+    /* Reto de conservación */
+    .tarjeta-reto {
+      position: absolute;
+      top: 200px;
+      right: 15px;
+      background: rgba(255,255,255,0.95);
+      padding: 15px 40px 15px 20px;
+      border-radius: 12px;
+      max-width: 280px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 80;
+      display: none;
+    }
+    
+    .tarjeta-reto.mostrar {
+      display: block;
+    }
+    
+    .tarjeta-reto h3 {
+      color: #006633;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    
+    .tarjeta-reto p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    
+    .cerrar {
+      margin-top: 10px;
+      background: #006633;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    
+    /* Caja de idea — más pequeña abajo */
+    .caja-idea {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 12px 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+      z-index: 90;
+      width: 90%;
+      max-width: 300px;
+    }
+    
+    .caja-idea strong {
+      color: #006633;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    
+    .caja-idea textarea {
+      width: 100%;
+      height: 45px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 6px 8px;
+      margin-bottom: 8px;
+      resize: none;
+      font-size: 13px;
+    }
+    
+    /* Botón como en tu ejemplo: amarillo con flecha */
+    .btn-enviar {
+      background: #f9b823;
+      color: #000;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .btn-enviar:hover {
+      background: #e8a900;
+    }
+  </style>
+</head>
+<body>
 
-.info-cuadro.mostrar {
-  display: block;
-}
+  <a href="index.html" class="boton-volver">← Volver</a>
 
-/* Botón X para cerrar */
-.cerrar-cuadro {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: #666;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #f0f0f0;
-}
+  <div class="selector-idioma">
+    <button class="activo" onclick="cambiarIdioma('es')">🇪🇸</button>
+    <button onclick="cambiarIdioma('ash')">🌿</button>
+    <button onclick="cambiarIdioma('en')">🇬🇧</button>
+  </div>
 
-.cerrar-cuadro:hover {
-  background: #e0e0e0;
-  color: #000;
-}
+  <div class="portal-luz" style="top: 40%; left: 50%; transform: translate(-50%, -50%);" onclick="mostrarHistoria()">💧</div>
 
-/* Área de idea de conservación — más pequeña */
-.idea-conservacion {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #ddd;
-}
+  <!-- Tarjeta de historia con X de cierre -->
+  <div class="tarjeta-historia" id="tarjetaHistoria">
+    <button class="cerrar-x" onclick="cerrarHistoria()">&times;</button>
+    <h3 id="tituloHistoria">💧 El agua es vida</h3>
+    <p id="textoHistoria">El agua es vida. Nuestros antepasados siempre nos enseñaron que el agua debe respetarse y cuidarse.</p>
+  </div>
 
-.idea-conservacion h4 {
-  font-size: 14px;
-  margin-bottom: 6px;
-  color: #0f4d2c;
-}
+  <!-- Tarjeta de reto con X de cierre -->
+  <div class="tarjeta-reto" id="tarjetaReto">
+    <button class="cerrar-x" onclick="cerrarReto()">&times;</button>
+    <h3>🌿 Dato de Conservación</h3>
+    <p>La selva de Perené alberga especies únicas. Al cuidar el bosque, protegemos el hogar de todos los animales.</p>
+    <button class="cerrar" onclick="cerrarReto()">Entendido</button>
+  </div>
 
-.idea-conservacion textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 13px;
-  resize: none;
-  height: 60px;
-  margin-bottom: 8px;
-}
+  <!-- Caja de idea más pequeña con botón como tu ejemplo -->
+  <div class="caja-idea">
+    <strong>💡 Tu idea de conservación</strong>
+    <textarea id="miIdea" placeholder="Escribe aquí tu idea..."></textarea>
+    <button class="btn-enviar" onclick="enviarIdea()">➤ Enviar mi idea</button>
+  </div>
 
-/* Botón de enviar — como el ejemplo */
-.btn-enviar {
-  background: #f5a623;
-  color: #000;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-}
+  <a-scene 
+    arjs="sourceType: webcam;"
+    vr-mode-ui="enabled: false">
+    
+    <a-assets>
+      <a-asset-item id="ave1" src="mariposa-morpho.glb"></a-asset-item>
+      <a-asset-item id="ave2" src="tucan.glb"></a-asset-item>
+    </a-assets>
 
-.btn-enviar:hover {
-  background: #e69500;
-}
+    <a-entity id="animal1" gltf-model="#ave1" position="-1 0.5 -2" scale="0.4 0.4 0.4"></a-entity>
+    <a-entity id="animal2" gltf-model="#ave2" position="1 0.8 -2.5" scale="0.5 0.5 0.5"></a-entity>
+    
+    <a-entity camera></a-entity>
+    <a-light type="ambient" intensity="1.5"></a-light>
+  </a-scene>
+
+  <script>
+    const textos = {
+      es: {
+        titulo: "💧 El agua es vida",
+        relato: "El agua es vida. Nuestros antepasados siempre nos enseñaron que el agua debe respetarse y cuidarse."
+      },
+      ash: {
+        titulo: "💧 Tsiri anke",
+        relato: "Tsiri anke. Koki tsiri okakori, okanti joshinto."
+      },
+      en: {
+        titulo: "💧 Water is Life",
+        relato: "Water is life. Our ancestors taught us that water must always be respected and protected."
+      }
+    };
+    
+    let idiomaActual = 'es';
+    
+    function cambiarIdioma(idioma) {
+      idiomaActual = idioma;
+      document.querySelectorAll('.selector-idioma button').forEach(b => b.classList.remove('activo'));
+      event.target.classList.add('activo');
+      document.getElementById('tituloHistoria').textContent = textos[idioma].titulo;
+      document.getElementById('textoHistoria').textContent = textos[idioma].relato;
+    }
+    
+    function mostrarHistoria() {
+      document.getElementById('tarjetaHistoria').classList.add('mostrar');
+      document.getElementById('tarjetaReto').classList.add('mostrar');
+    }
+    
+    function cerrarHistoria() {
+      document.getElementById('tarjetaHistoria').classList.remove('mostrar');
+    }
+    
+    function cerrarReto() {
+      document.getElementById('tarjetaReto').classList.remove('mostrar');
+    }
+    
+    function enviarIdea() {
+      const idea = document.getElementById('miIdea').value;
+      if (idea.trim() === '') {
+        alert('✍️ Escribe algo antes de enviar');
+        return;
+      }
+      alert('✅ ¡Gracias por tu idea! 💚\n\nTu aporte ayuda a cuidar Perené.');
+      document.getElementById('miIdea').value = '';
+    }
+    
+    let tiempo = 0;
+    function animarFauna() {
+      tiempo += 0.02;
+      const a1 = document.getElementById('animal1');
+      const a2 = document.getElementById('animal2');
+      
+      if (a1) {
+        const y1 = Math.sin(tiempo * 0.8) * 0.3 + 0.5;
+        a1.setAttribute('position', `-1 ${y1} -2`);
+        a1.setAttribute('rotation', `0 ${Math.sin(tiempo * 0.3) * 15} 0`);
+      }
+      if (a2) {
+        const y2 = Math.sin(tiempo * 0.6 + 1) * 0.25 + 0.8;
+        a2.setAttribute('position', `1 ${y2} -2.5`);
+      }
+      
+      requestAnimationFrame(animarFauna);
+    }
+    animarFauna();
+  </script>
+
+</body>
+</html>
