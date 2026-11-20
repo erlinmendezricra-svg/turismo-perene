@@ -1,0 +1,57 @@
+{
+  "atractivos": [
+    {
+      "id": 1,
+      "nombre": "Boca Tigre",
+      "descripcion": "Disfruta de la naturaleza y caídas de agua en una zona de selva alta.",
+      "historia": "Un lugar sagrado donde el río se abre paso entre las rocas.",
+      "animal": "Gallito de las Rocas",
+      "curiosidad": "El ave nacional del Perú, vive solo en zonas con agua cristalina.",
+      "imagen": "boca_tigre.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "Caverna La Olada",
+      "descripcion": "Explora formaciones naturales y la riqueza de la selva central.",
+      "historia": "Refugio ancestral de nuestros antepasados Asháninka.",
+      "animal": "Jaguar",
+      "curiosidad": "El guardián del bosque, mantiene el equilibrio de toda la selva.",
+      "imagen": "caverna_la_olada.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "Catarata",
+      "descripcion": "Paisaje natural rodeado de vegetación y agua cristalina.",
+      "historia": "El agua que cae canta canciones a la selva. Cuidarla es cuidar la vida.",
+      "animal": "Mariposa Morpho",
+      "curiosidad": "Sus alas brillan como el cielo — un regalo de la selva.",
+      "imagen": "catarata.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Fundo San Isidro",
+      "descripcion": "Varias caídas de agua en un entorno natural del Río Amarillo.",
+      "historia": "Tierras fértiles que han alimentado a nuestra comunidad por generaciones.",
+      "animal": "Tucán",
+      "curiosidad": "Ayuda a que el bosque crezca al llevar las semillas de los frutos.",
+      "imagen": "fundo_san_isidro.jpg"
+    }
+  ],
+  
+  "relatos": {
+    "es": {
+      "agua": "El agua es vida. Nuestros antepasados siempre nos enseñaron que el agua debe respetarse y cuidarse.",
+      "bosque": "La selva no es solo árboles — es nuestro hogar, nuestra madre que nos da todo."
+    },
+    "ash": {
+      "agua": "Tsiri anke. Koki tsiri okakori, okanti joshinto.",
+      "bosque": "Koki osheki joshinto — osheki tsinka, osheki tsiri, osheki kenoki."
+    },
+    "en": {
+      "agua": "Water is life. Our ancestors taught us that water must always be respected and protected.",
+      "bosque": "The forest is not just trees — it is our home, our mother that gives us everything."
+    }
+  },
+  
+  "ideas_conservacion": []
+}
