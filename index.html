@@ -345,13 +345,12 @@
 <body>
 <header>
     <div class="logo">MUNICIPALIDAD DISTRITAL DE PERENÉ</div>
-   <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#video-section">Atractivos</a>
-    <a href="#proyecto">Proyecto</a>
-    <a href="fauna-saberes.html">🌿 Fauna & AR</a>
-</nav>
-
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#video-section">Atractivos</a>
+        <a href="#proyecto">Proyecto</a>
+        <a href="fauna-saberes.html">🌿 Fauna & AR</a>
+    </nav>
 </header>
 
 <section id="inicio" class="hero">
@@ -420,9 +419,9 @@
         </div>
 
         <div class="tarjeta">
-            <img src="catarata.jpg" alt="Catarata" class="tarjeta-imagen" onclick="abrirGaleria(2)">
+            <img src="catarata.jpg" alt="Catarata Bayoz" class="tarjeta-imagen" onclick="abrirGaleria(2)">
             <div class="tarjeta-contenido">
-                <h3>Catarata</h3>
+                <h3>Catarata Bayoz</h3>
                 <p>Paisaje natural rodeado de vegetación y agua cristalina.</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
@@ -431,7 +430,7 @@
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(2)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Catarata, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irGoogleMaps('Catarata Bayoz, Perené, Junín, Perú')">📍 Cómo llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(2)">📸 Fotos de Cultura</button>
             </div>
@@ -492,9 +491,9 @@
         </div>
 
         <div class="tarjeta">
-            <img src="piscina.jpg" alt="Piscina" class="tarjeta-imagen" onclick="abrirGaleria(6)">
+            <img src="piscina.jpg" alt="Complejo Turístico Valle Verde" class="tarjeta-imagen" onclick="abrirGaleria(6)">
             <div class="tarjeta-contenido">
-                <h3>Piscina</h3>
+                <h3>Complejo Turístico Valle Verde</h3>
                 <p>Espacio recreativo natural para disfrutar en familia.</p>
                 <div class="comidas-tarjeta">
                     <h4>🍽️ Comidas típicas</h4>
@@ -503,7 +502,7 @@
                 </div>
                 <div class="botones-tarjeta">
                     <button class="boton boton-conocer" onclick="mostrarAtractivo(6)">Conocer más</button>
-                    <button class="boton boton-mapa" onclick="irGoogleMaps('Piscina turística, Perené, Junín, Perú')">📍 Cómo llegar</button>
+                    <button class="boton boton-mapa" onclick="irGoogleMaps('Complejo Turístico Valle Verde, Perené, Junín, Perú')">📍 Cómo llegar</button>
                 </div>
                 <button class="boton boton-galeria" onclick="abrirGaleria(6)">📸 Fotos de Cultura</button>
             </div>
@@ -613,7 +612,7 @@ const atractivos = [
         }
     },
     {
-        nombre: "Catarata",
+        nombre: "Catarata Bayoz",
         imagen: "catarata.jpg",
         descripcion: "Salto de agua rodeado de exuberante vegetación de la Selva Central.",
         comidas: "Sopa de camarones de río<br>Maito de pescado en hoja de bijao",
@@ -645,7 +644,7 @@ const atractivos = [
         galeria: { descripcion: "Cultura de los valles de Perené.", fotos: [] }
     },
     {
-        nombre: "Piscina",
+        nombre: "Complejo Turístico Valle Verde",
         imagen: "piscina.jpg",
         descripcion: "Espacio recreativo natural para disfrutar en familia.",
         comidas: "Crema de ungurahui — fruta local<br>Pescado frito con yuca",
