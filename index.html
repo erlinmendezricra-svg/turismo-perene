@@ -294,9 +294,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         .galeria-cabecera h2 { color: white; font-size: 28px; }
+        .galeria-descripcion {
+            color: #ccc;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
         .btn-volver {
             background: transparent;
             border: 2px solid white;
@@ -315,6 +320,12 @@
             background: #222;
             border-radius: 12px;
             overflow: hidden;
+            cursor: zoom-in;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .foto-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
         .foto-item img {
             width: 100%;
@@ -327,6 +338,54 @@
             padding: 12px;
             font-size: 14px;
         }
+
+        /* Visor de imagen en grande (Lightbox) */
+        .visor-grande {
+            display: none;
+            position: fixed;
+            z-index: 11000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.94);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+        .visor-grande.mostrar {
+            display: flex;
+        }
+        .visor-grande img {
+            max-width: 92%;
+            max-height: 80vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+        }
+        .visor-grande p {
+            color: white;
+            margin-top: 15px;
+            font-size: 18px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        .cerrar-visor {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 42px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .cerrar-visor:hover {
+            color: #ff6b6b;
+        }
+
         footer {
             background: #0f4d2c;
             color: white;
@@ -572,6 +631,13 @@
     <div class="galeria-fotos" id="galeriaFotos"></div>
 </div>
 
+<!-- Visor en grande al seleccionar un plato o foto -->
+<div id="visorGrande" class="visor-grande" onclick="cerrarVisorGrande()">
+    <button class="cerrar-visor" onclick="cerrarVisorGrande()">&times;</button>
+    <img id="imagenGrande" src="" alt="" onclick="event.stopPropagation()">
+    <p id="pieGrande" onclick="event.stopPropagation()"></p>
+</div>
+
 <footer>
     <h3>Municipalidad Distrital de Perené</h3>
     <p>Sistema de Información Turística — ¡Descubre y disfruta Perené! 🍲</p>
@@ -587,7 +653,7 @@ const atractivos = [
         comidas: "Juanes — arroz con pollo en hoja de bijao<br>Tacacho con cecina — plátano asado con cerdo",
         ruta: "Desde La Merced por carretera hasta Santa Ana y continuar 13 km más.",
         galeria: {
-            descripcion: "Tradiciones, comidas y costumbres de la comunidad de Boca Tigre.",
+            descripcion: "Tradiciones, comidas y costumbres de la comunidad de Boca Tigre. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "caseta_boca_tigre.jpg", pie: "Caseta de información" },
                 { src: "comida.jpg", pie: "Comidas típicas de la zona" },
@@ -602,7 +668,7 @@ const atractivos = [
         comidas: "Patarashca — pescado en hoja de plátano<br>Inchicapi — sopa de gallina con maní",
         ruta: "A 20 km de Perené por carretera, luego ingreso a pie.",
         galeria: {
-            descripcion: "Historias y cultura relacionadas con la caverna.",
+            descripcion: "Historias y cultura relacionadas con la caverna. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "caseta_al_rio.jpg", pie: "Camino de ingreso" },
                 { src: "olada1.jpg", pie: "Vista principal de la caverna" },
@@ -618,7 +684,7 @@ const atractivos = [
         comidas: "Sopa de camarones de río<br>Maito de pescado en hoja de bijao",
         ruta: "Desde Villa Perené por vía turística.",
         galeria: {
-            descripcion: "Tradiciones y gastronomía de las familias cercanas a Catarata Bayoz.",
+            descripcion: "Tradiciones y gastronomía de las familias cercanas a Catarata Bayoz. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "catarata.jpg", pie: "Caída principal de Catarata Bayoz" },
                 { src: "platos_tipicos.jpg", pie: "Comidas típicas de la zona" },
@@ -633,7 +699,7 @@ const atractivos = [
         comidas: "Seco de chabelo — plátano verde con carne<br>Chapo — plátano maduro con queso",
         ruta: "Hacia Río Amarillo hasta Naciente Kimarini.",
         galeria: {
-            descripcion: "Vida comunitaria y sabores de Río Amarillo.",
+            descripcion: "Vida comunitaria y sabores de Río Amarillo. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "fundo_san_isidro.jpg", pie: "Entorno natural de Río Amarillo" },
                 { src: "platos_tipicos.jpg", pie: "Gastronomía tradicional" }
@@ -647,7 +713,7 @@ const atractivos = [
         comidas: "Caldo de carachama — pescado de río<br>Ensalada de palmito fresco",
         ruta: "Consultar referencia en Villa Perené.",
         galeria: {
-            descripcion: "Memoria e historia del pueblo.",
+            descripcion: "Memoria e historia del pueblo. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "juan_santos_atahualpa.jpg", pie: "Atractivo y entorno histórico" },
                 { src: "plato_tipico.jpeg", pie: "Tradición gastronómica local" }
@@ -661,7 +727,7 @@ const atractivos = [
         comidas: "Juane de gallina en hoja de bijao<br>Ceviche de paiche — pescado de río",
         ruta: "Ruta hacia Valle Grande hasta la plataforma.",
         galeria: {
-            descripcion: "Cultura y sabores de los valles de Perené.",
+            descripcion: "Cultura y sabores de los valles de Perené. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "mirador.jpg", pie: "Vista panorámica desde el mirador" },
                 { src: "platos_tipicos.jpg", pie: "Comidas típicas de la zona" }
@@ -675,7 +741,7 @@ const atractivos = [
         comidas: "Crema de ungurahui — fruta local<br>Pescado frito con yuca",
         ruta: "Complejo turístico desde Villa Perené.",
         galeria: {
-            descripcion: "Reuniones familiares, recreación y comidas en Valle Verde.",
+            descripcion: "Reuniones familiares, recreación y comidas en Valle Verde. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "piscina.jpg", pie: "Complejo Turístico Valle Verde" },
                 { src: "platos_tipicos.jpg", pie: "Platos y sabores locales" },
@@ -690,7 +756,7 @@ const atractivos = [
         comidas: "Mazamorra de plátano — postre tradicional<br>Pescado frito con yuca",
         ruta: "Hacia Puerto Yurinaki, luego caminar 340 m.",
         galeria: {
-            descripcion: "Leyendas y belleza de la zona.",
+            descripcion: "Leyendas y belleza de la zona. (Haz clic en una foto para verla en grande)",
             fotos: [
                 { src: "velo_de_la_novia.jpg", pie: "Catarata Velo de la Novia" },
                 { src: "plato_tipico.jpeg", pie: "Tradición y comida local" }
@@ -708,6 +774,7 @@ function abrirGaleria(i) {
     a.galeria.fotos.forEach(f => {
         const div = document.createElement("div");
         div.className = "foto-item";
+        div.onclick = () => abrirVisorGrande(f.src, f.pie);
         div.innerHTML = `<img src="${f.src}" alt="${f.pie}"><p>${f.pie}</p>`;
         cont.appendChild(div);
     });
@@ -717,6 +784,14 @@ function abrirGaleria(i) {
 function cerrarGaleria() {
     document.getElementById("galeriaVentana").classList.remove("mostrar");
     document.body.style.overflow = "auto";
+}
+function abrirVisorGrande(src, pie) {
+    document.getElementById("imagenGrande").src = src;
+    document.getElementById("pieGrande").textContent = pie;
+    document.getElementById("visorGrande").classList.add("mostrar");
+}
+function cerrarVisorGrande() {
+    document.getElementById("visorGrande").classList.remove("mostrar");
 }
 function mostrarAtractivo(i) {
     const a = atractivos[i];
@@ -734,7 +809,14 @@ function irGoogleMaps(dest) {
     window.open("https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(dest) + "&travelmode=driving", "_blank");
 }
 document.addEventListener("keydown", e => {
-    if (e.key === "Escape") { cerrarAtractivo(); cerrarGaleria(); }
+    if (e.key === "Escape") {
+        if (document.getElementById("visorGrande").classList.contains("mostrar")) {
+            cerrarVisorGrande();
+        } else {
+            cerrarAtractivo();
+            cerrarGaleria();
+        }
+    }
 });
 </script>
 </body>
